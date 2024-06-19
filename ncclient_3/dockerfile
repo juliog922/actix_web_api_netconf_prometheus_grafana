@@ -1,0 +1,13 @@
+# Use the official Rust image as a parent image for the build stage
+FROM rust:latest
+
+# 2. Copy the files in your machine to the Docker image
+COPY ./ ./
+
+# Build your program for release
+RUN cargo build --release
+
+EXPOSE 4000
+
+# Run the binary
+CMD ["./target/release/ncclient_3"]
